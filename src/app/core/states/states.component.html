@@ -1,0 +1,9 @@
+<div class="form-group">
+<label for="countrys">Contrys: </label>
+<select id="countrys" class="form-control" ngModel (ngModelChange)="addEstado($event)">
+    <option *ngFor="let state of states" [ngValue]="state.name"> {{ state.name }}</option>
+</select>
+</div>
+<div class="form-group">
+    <button class="btn btn-primary " (click)='enviar()'>enviar</button>
+</div>

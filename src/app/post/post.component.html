@@ -1,0 +1,22 @@
+<form [formGroup]="postForm">
+    <p>
+        <label>
+            First Name:
+            <input type="text" formControlName="id">
+        </label>
+    </p>
+    <p>
+        <label>
+            Titulo:
+            <input type="text" formControlName="titulo">
+        </label>
+    </p>
+    <p>
+        <label>
+            Last Name:
+            <input type="text" formControlName="conteudo">
+        </label>
+    </p>
+    <input value="enviar" type="button" (click)="enviar()">
+
+</form>
