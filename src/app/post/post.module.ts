@@ -1,9 +1,11 @@
+import { registerService } from './register/register.service';
 import { StatesComponent } from './../core/states/states.component';
 import { RegisterComponent } from './register/register.component';
 import { PostComponent } from './post.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http'
 
 
 
@@ -12,8 +14,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,    //added here too
-    ReactiveFormsModule //added here too
+    ReactiveFormsModule, //added here too
+    HttpClientModule
+    
   ],
-  exports: [ ]
+  exports: [ ],
+  
 })
 export class PostModule { }
