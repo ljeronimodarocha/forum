@@ -1,5 +1,5 @@
 import { registerService } from './register.service';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
 import { user } from './user';
 
@@ -15,28 +15,28 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.teste = this.formbuilder.group({
-      name: [],
-      email: [''],
-      password: [''],
-      replayPassword: [''],
-      state: ['']
+      name: [, Validators.required],
+      email: [, [Validators.required]],
+      password: [, Validators.required],
+      replayPassword: ['', Validators.required],
+      state: []
     });
+
+
   }
   enviar(evento) {
     if (evento) {
       this.teste.controls['state'].patchValue(evento);
-
-
-      this.u.name =  this.teste.controls["name"].value;
-      this.u.email = this.teste.controls["email"].value;
-      this.u.password = this.teste.controls["password"].value;
-      this.u.state = this.teste.controls["state"].value;
-
-
-      
-     
-      console.log(this.u);
-      // this.service.save(this.u);
+      console.log(this.teste);
+      this.service.save(this.teste.value);
     }
+  }
+  checkReplayPassword(event) {
+    var password = this.teste.controls['password'].value
+    var replayPassword = this.teste.controls['replayPassword'].value
+    if (!(password === replayPassword)) {
+
+    }
+
   }
 }

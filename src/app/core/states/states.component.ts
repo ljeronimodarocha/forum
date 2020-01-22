@@ -10,11 +10,11 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 export class StatesComponent implements OnInit {
   @Output() teste2 = new EventEmitter();
   @Input() valor;
-  enviar() {
-    this.teste2.emit(this.valor)
-  }
+  // enviar() {
+  //   this.teste2.emit(this.valor)
+  // }
   constructor(private formbuilder: FormBuilder) { }
-  @Output() states;
+  states;
   ngOnInit() {
     this.states = [
       { name: 'Acre', abbrev: 'AC' },
@@ -49,6 +49,7 @@ export class StatesComponent implements OnInit {
   }
   addEstado(v) {
     this.valor = v;
+    this.teste2.emit(this.valor)
   }
 
 }

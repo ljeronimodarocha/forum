@@ -12,6 +12,6 @@ export class registerService {
        
     }
     save(u:user){
-        this.http.post(this.rest+ "/save", u).subscribe();
+        this.http.post<user>(this.rest+ "save", u).subscribe();
     }
 }
