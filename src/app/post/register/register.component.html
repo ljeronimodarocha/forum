@@ -1,4 +1,4 @@
-<form [formGroup]="teste" class="container col-sm-6" (ngSubmit)='enviar()' required>
+<form [formGroup]="teste" class="container col-sm-6" (ngSubmit)='registerUser()' required>
     <div class="form-group">
         <label for="name">Name: </label>
         <input id="name" class="form-control" type="text" formControlName="name">
@@ -13,12 +13,7 @@
     </div>
     <div class="form-group">
         <label for="replayPassword">Replay Password: </label>
-        <input id="replayPassword" (blur)="checkReplayPassword($event)" class="form-control" type="password"
-            formControlName="replayPassword">
-
-    </div>
-    <div *ngIf="replayPassword.valid" class="alert alert-success" role="alert">
-        Um simples alerta success. Olha só!
+        <input id="replayPassword" class="form-control" type="password" formControlName="replayPassword">
     </div>
     <app-states (teste2)='enviar($event)'></app-states>
     <div class="form-group">
