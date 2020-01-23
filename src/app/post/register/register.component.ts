@@ -27,16 +27,6 @@ export class RegisterComponent implements OnInit {
   enviar(evento) {
     if (evento) {
       this.teste.controls['state'].patchValue(evento);
-      console.log(this.teste);
-      this.service.save(this.teste.value);
     }
-  }
-  checkReplayPassword(event) {
-    var password = this.teste.controls['password'].value
-    var replayPassword = this.teste.controls['replayPassword'].value
-    if (!(password === replayPassword)) {
-
-    }
-
   }
 }
