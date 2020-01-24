@@ -6,7 +6,7 @@ export function confirmPasswordValidator() {
         if (!(password.value === confirmPassword.value)) {
             return { confirmPassword: true }
         }
-        return false;
+        return null
     }
 }
 

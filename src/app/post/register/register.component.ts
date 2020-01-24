@@ -16,10 +16,13 @@ export class RegisterComponent implements OnInit {
     this.teste = this.formbuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required]],
-      password: ['', Validators.required],
-      replayPassword: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      replayPassword: ['', [Validators.required, Validators.minLength(6)]],
       state: ['', Validators.required]
     }, { validator: confirmPasswordValidator() });
+    console.log(this.teste);
+    
+    
   }
   registerUser() {
     this.service.save(this.teste.value);
