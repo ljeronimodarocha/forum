@@ -1,24 +1,26 @@
 <form [formGroup]="teste" class="container col-sm-6" (ngSubmit)='registerUser()' required>
-    <div class="form-group">
+    <div [ngClass]="{'alert alert-danger':teste.get('name').errors}" class="form-group">
         <label for="name">Name: </label>
-        <input id="name" class="form-control" type="text" formControlName="name">
+        <input  id="name" class="form-control" type="text"
+            formControlName="name">
     </div>
-    <div class="form-group">
+    <div [ngClass]="{'alert alert-danger':teste.get('email').errors}" class="form-group">
         <label for="email">Email: </label>
-        <input id="email" class="form-control " type="email" formControlName="email">
+        <input  id="email" class="form-control "
+            type="email" formControlName="email">
     </div>
-    <div class="form-group">
+    <div [ngClass]="{'alert alert-danger':teste.get('password').errors}" class="form-group">
         <label for="password">Password: </label>
-        <input [ngClass]="{'alert alert-danger':teste.get('password').errors}" type="password" id="password"
-            class="form-control" type="password" formControlName="password">
+        <input type="password" id="password" class="form-control" type="password" formControlName="password">
     </div>
-    <div class="form-group">
+    <div [ngClass]="{'alert alert-danger':teste.get('replayPassword').errors || teste.errors?.confirmPassword}"
+        class="form-group">
         <label for="replayPassword">Replay Password: </label>
-        <input id="replayPassword" class="form-control"
-            [ngClass]="{'alert alert-danger':teste.errors?.confirmPassword}"
-            type="password" formControlName="replayPassword">
+        <input id="replayPassword" class="form-control" type="password" formControlName="replayPassword">
     </div>
-    <app-states (teste2)='enviar($event)'></app-states>
+    <div [ngClass]="{'alert alert-danger':teste.get('state').errors}">
+        <app-states (teste2)='enviar($event)'></app-states>
+    </div>
     <div class="form-group">
         <button [disabled]="teste.invalid" class="btn btn-primary">Enviar</button>
     </div>
