@@ -1,14 +1,12 @@
 <form [formGroup]="teste" class="container col-sm-6" (ngSubmit)='registerUser()' required>
     <div [ngClass]="{'alert alert-danger':teste.get('name').errors}" class="form-group">
         <label for="name">Name: </label>
-        <input  id="name" class="form-control" type="text"
-            formControlName="name">
+        <input id="name" class="form-control" type="text" formControlName="name">
     </div>
-    <div [ngClass]="{'alert alert-danger':teste.get('email').errors}" class="form-group">
+    <div [ngClass]="{'alert alert-danger':teste.get('email').errors || teste.errors?.checkExistsEmail}"
+        class="form-group">
         <label for="email">Email: </label>
-        <input (input)='checkEmail()
-        ' id="email" class="form-control "
-            type="email" formControlName="email">
+        <input id="email" class="form-control" type="email" formControlName="email">
     </div>
     <div [ngClass]="{'alert alert-danger':teste.get('password').errors}" class="form-group">
         <label for="password">Password: </label>

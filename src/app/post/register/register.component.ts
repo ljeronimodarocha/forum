@@ -4,7 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
-import { confirmPasswordValidator } from './../../core/share/confirmPassword.validator';
+import { confirmPasswordValidator, checkExistsEmail } from './../../core/share/confirmPassword.validator';
 import { registerService } from './register.service';
 @Component({
   selector: 'app-register',
@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       replayPassword: ['', [Validators.required, Validators.minLength(6)]],
       state: ['', Validators.required]
-    }, { validator: confirmPasswordValidator() });
+    }, { validator: confirmPasswordValidator(), validators: checkExistsEmail(this.service) });
 
   }
   registerUser() {
@@ -32,17 +32,5 @@ export class RegisterComponent implements OnInit {
     if (evento) {
       this.teste.controls['state'].patchValue(evento);
     }
-  }
-  checkEmail() {
-    //console.log(this.teste.value.email)
-    let u = this.service.checkEmail(this.teste.value.email);
-    u.subscribe(res => {
-      if (res !== null) {
-        console.log("tem usuário");
-      } else {
-        console.log("não tem usuário");
-
-      }
-    });
   }
 }
