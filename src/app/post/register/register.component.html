@@ -6,7 +6,8 @@
     </div>
     <div [ngClass]="{'alert alert-danger':teste.get('email').errors}" class="form-group">
         <label for="email">Email: </label>
-        <input  id="email" class="form-control "
+        <input (input)='checkEmail()
+        ' id="email" class="form-control "
             type="email" formControlName="email">
     </div>
     <div [ngClass]="{'alert alert-danger':teste.get('password').errors}" class="form-group">
