@@ -1,6 +1,6 @@
-import { registerService } from './register/register.service';
+import { registerService } from '../usuario/register/register.service';
 import { StatesComponent } from './../core/states/states.component';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from '../usuario/register/register.component';
 import { PostComponent } from './post.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';

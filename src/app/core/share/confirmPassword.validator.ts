@@ -1,6 +1,6 @@
 import { AbstractControl, Validators, FormGroup } from '@angular/forms';
 import { debounceTime, tap } from 'rxjs/operators';
-import { registerService } from 'src/app/post/register/register.service';
+import { registerService } from 'src/app/usuario/register/register.service';
 import { Subject } from 'rxjs';
 export function confirmPasswordValidator() {
     return (group: FormGroup) => {

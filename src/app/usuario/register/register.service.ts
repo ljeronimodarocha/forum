@@ -1,7 +1,7 @@
-import { user } from './user';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { } from '@angular/common/http'
+import { user } from './user';
+import { Observable } from 'rxjs';
 
 
 
@@ -13,8 +13,8 @@ export class registerService {
     constructor(private http: HttpClient) {
 
     }
-    save(u: user) {
-        this.http.post<user>(this.rest + "save", u).subscribe();
+    save(u: user){
+        return this.http.post<user>(this.rest + "save", u).toPromise();
     }
     checkEmail(email) {
         return this.http

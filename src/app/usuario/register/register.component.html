@@ -5,7 +5,7 @@
     </div>
     <div [ngClass]="{'alert alert-danger':teste.get('email').errors, 'alert alert-danger': teste.get('email').dirty}" class="form-group">
         <label for="email">Email: </label>
-        <input (change)="checkExistsEmail($event)" id="email" class="form-control" type="email" formControlName="email">
+        <input id="email" class="form-control" type="email" formControlName="email">
     </div>
     <div [ngClass]="{'alert alert-danger':teste.get('password').errors && !teste.get('password').dirty}" class="form-group">
         <label for="password">Password: </label>
