@@ -1,9 +1,4 @@
-<form [formGroup]="formLogin" class="container col-sm-6" (ngSubmit)='registerUser()' required>
-    <div [ngClass]="{'alert alert-danger':formLogin.get('name').errors , 'alert alert-danger': formLogin.get('name').dirty}"
-        class="form-group">
-        <label for="name">Name: </label>
-        <input id="name" class="form-control" type="text" formControlName="name">
-    </div>
+<form [formGroup]="formLogin" class="container col-sm-6" (ngSubmit)='logar()' required>
     <div [ngClass]="{'alert alert-danger':formLogin.get('email').errors, 'alert alert-danger': formLogin.get('email').dirty}"
         class="form-group">
         <label for="email">Email: </label>

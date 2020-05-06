@@ -1,4 +1,4 @@
-import { user } from './user';
+import { User } from './User';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { debounceTime } from 'rxjs/operators';
@@ -20,25 +20,22 @@ export class RegisterComponent {
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(0)]],
       replayPassword: ['', [Validators.required, Validators.minLength(0)]],
-      state: ['', Validators.required]
+      estado: ['', Validators.required]
     }, { validator: confirmPasswordValidator() });;
   debounce: Subject<string> = new Subject<string>();
-  constructor(private formbuilder: FormBuilder, private service: registerService) { }
-
-
-
-
-
-  registerUser(t) {
-    this.service.save(this.teste.value);
-    console.log(t);
-
+  constructor(private formbuilder: FormBuilder, private service: registerService) {
+  }
+  registerUser(t:User) {
+    this.service.save(this.teste.value).subscribe(sucesso =>
+      console.log(sucesso),
+      error => console.log(error),
+    );
     //this.teste.reset();
 
   }
   enviar(evento) {
     if (evento) {
-      this.teste.controls['state'].setValue(evento);
+      this.teste.controls['estado'].setValue(evento);
     }
   }
   checkExistsEmail(string: any) {

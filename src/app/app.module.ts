@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './usuario/login/login.service';
 import { UsuarioModule } from './usuario/usuario.module';
 import { registerService } from './usuario/register/register.service';
@@ -25,7 +26,7 @@ import { LoginComponent } from './usuario/login/login.component';
     UsuarioModule,
     FormsModule,    //added here too
     ReactiveFormsModule, //added here too
-    
+    HttpClientModule
   ],
   providers: [ registerService, LoginService],
   bootstrap: [AppComponent]
