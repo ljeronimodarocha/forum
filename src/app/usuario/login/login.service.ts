@@ -1,5 +1,5 @@
 import { take } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginService {
 
-  private readonly rest = `${environment.API}oauth/token?grant_type=password&username=`;
+  private readonly rest = `${environment.API}oauth/token`;
 
   constructor(private http: HttpClient, ) {
 
@@ -17,9 +17,18 @@ export class LoginService {
     let params = new URLSearchParams();
     params.append('grant_type', 'password');
 
-    let headers = new HttpHeaders({ 'Accept': 'text/json' });
-    headers.append('Accept', 'text/json');
-    headers.append('Authorization', 'Basic Y2xpZW50LWlkOnNlY3JldC1pZA==');
-    return this.http.get(`${this.rest}${email}` + '&password=' + `${password}`, params.toString(),  {headers: headers }).subscribe();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic Y2xpZW50LWlkOnNlY3JldC1pZA==',
+      }),
+      params: new HttpParams().append('grant_type', 'password')
+        .append('username', 'admin@admin.com')
+        .append('password', 'admin')
+
+    };
+    console.log(httpOptions);
+
+    return this.http.get(`${this.rest}`, httpOptions).pipe(take(1));
   }
 }

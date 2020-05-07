@@ -19,7 +19,6 @@ export class StatesComponent implements OnInit {
     this.states = [
       { name: 'Acre', abbrev: 'AC' },
       { name: 'Alagoas', abbrev: 'AL' },
-      { name: 'Colorado', abbrev: 'CO' },
       { name: 'Amapá', abbrev: 'AP' },
       { name: 'Amazonas', abbrev: 'AM' },
       { name: 'Bahia', abbrev: 'BA' },
