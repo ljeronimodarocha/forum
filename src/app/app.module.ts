@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './usuario/login/login.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 
@@ -17,6 +18,7 @@ import { LoginComponent } from './usuario/login/login.component';
   declarations: [
     AppComponent,
     LoginComponent,
+    NavBarComponent,
 
   ],
   imports: [

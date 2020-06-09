@@ -9,20 +9,15 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginService {
 
-  private readonly rest = `${environment.API}oauth/token`;
+  private readonly rest = `${environment.API}login`;
 
   constructor(private http: HttpClient, ) {
 
   }
   logar(email: string, password: string) {
-    const httpOptions = {
-      headers: new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Authorization', 'Basic Y2xpZW50LWlkOnNlY3JldC1pZA=='),
-      params: new HttpParams().append('grant_type', 'password')
-        .append('username', 'admin@admin.com')
-        .append('password', 'admin')
-    };
-    return this.http.post(`${this.rest}`, {withCredentials:true, httpOptions});
+   const body = {
+     email : email, password : password 
+   }
+    return this.http.post(`${this.rest}`, body, {observe: 'response', responseType : 'json'});
   }
 }
