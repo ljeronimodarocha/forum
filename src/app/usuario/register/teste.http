@@ -1,9 +1,0 @@
-POST http://localhost:8080/save
-content-type: application/json
-user = {
-"name":"asasas",
-"email":"ljeronimodarocha@gmail.com",
-"password":"1",
-"state":"Alagoas"
-}
-

@@ -1,41 +1,44 @@
 import { LoginService } from './login.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Component, OnInit, Input } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Component, Input } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import {Router} from "@angular/router"
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [MessageService]
 })
-export class LoginComponent implements OnInit {
-
-  private currentUserSubject: BehaviorSubject<any>;
-  public currentUser: Observable<any>;
-
+export class LoginComponent {
   @Input() formLogin: FormGroup =
     this.formbuilder.group({
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(0)]],
     })
-  constructor(private formbuilder: FormBuilder, private service: LoginService) {
-    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('authorization')));
-    this.currentUser = this.currentUserSubject.asObservable();
+  constructor(private formbuilder: FormBuilder, private service: LoginService, private messageService: MessageService,
+    private router :Router) {
   }
   logar() {
     let email = this.formLogin.controls['email'].value;
     let password = this.formLogin.controls['password'].value;
     this.service.logar(email, password).subscribe(sucesso => {
-      console.log(sucesso.headers.get('authorization'));
+      this.messageService.add({ severity: 'success', summary: "Logado com sucesso" })
       localStorage.setItem('authorization', sucesso.headers.get('authorization'));
+      this.router.navigate(['home'])
     },
-      error => console.log(error),
+      error => this.messageService.add({
+        severity: 'error',
+        summary: error.error.message, detail: "Email ou senha incorreto!"
+        
+      })
     );
+    this.formLogin.reset();
   }
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('authorization');
-    this.currentUserSubject.next(null);
   }
 
 }

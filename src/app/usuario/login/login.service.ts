@@ -11,7 +11,7 @@ export class LoginService {
 
   private readonly rest = `${environment.API}login`;
 
-  constructor(private http: HttpClient, ) {
+  constructor(private http: HttpClient) {
 
   }
   logar(email: string, password: string) {

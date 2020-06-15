@@ -1,3 +1,5 @@
+import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './usuario/login/login.component';
 import { PostComponent } from './post/post.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -8,7 +10,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent, canActivate : [AuthGuard] }
 ];
 
 @NgModule({
