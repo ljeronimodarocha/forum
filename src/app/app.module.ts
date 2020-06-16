@@ -1,3 +1,4 @@
+import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -14,6 +15,7 @@ import { registerService } from './usuario/register/register.service';
 import { UsuarioModule } from './usuario/usuario.module';
 import {ToastModule} from 'primeng/toast';
 import { HomeComponent } from './home/home.component';
+
 
 
 
@@ -34,9 +36,8 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule, //added here too
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastModule
-
-
+    ToastModule,
+    TableModule
   ],
   providers: [registerService, LoginService, AuthGuard],
   bootstrap: [AppComponent]
