@@ -1,0 +1,27 @@
+<div class="list-group mt-3" *ngIf="post; else loading">
+    <div class="list-group mt-2 mb-550" class="list-group-item " role="tablist">
+        <div class="d-flex w-100 justify-content-between">
+            <h2 class="mb-1">{{post.titulo}}</h2>
+            <small>
+                {{post.dono.name}},
+                {{post.dateCriacao | date}}
+            </small>
+        </div>
+        <p class="mb-1">{{post.texto}}</p>
+        <small>{{post.status}}</small>
+    </div>
+</div>
+<ng-template #loading>
+    <h1>Carregando dados</h1>
+</ng-template>
+<div class="list-group mt-3">
+    <form [formGroup]="FormComentario" (ngSubmit)='adicionarComentario()' required>
+        <div class="form-group">
+            <label for="email">Comentário: </label>
+            <input id="email" class="form-control" type="text" formControlName="comentario">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Enviar</button>
+        </div>
+    </form>
+</div>

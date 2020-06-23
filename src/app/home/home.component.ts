@@ -8,27 +8,18 @@ import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  private posts :any=  [];
+  private posts: any = [];
 
-  constructor(private postsService : LoadPostsService, public elementRef:ElementRef) { }
+  constructor(private postsService: LoadPostsService, public elementRef: ElementRef) { }
 
   ngOnInit() {
-    this.postsService.buscaPosts().subscribe( res => {
+    this.postsService.buscaPosts().subscribe(res => {
       this.posts = res
-      console.log(this.posts);
-      
     },
       error => console.log(error)
-      
     )
   }
-  @HostListener("mouseover") teste(event){
-    console.log(event);
+  ativar(post) {
+    post.active = !post.active
   }
-  teste2(event){
-    console.log("tira");
-    
-  }
-  
-
 }

@@ -1,7 +1,9 @@
-<div class="list-group">
-    <div class="list-group mt-2 mb-550" *ngFor="let post of posts">
-        <a href="" class="list-group-item list-group-item-action" >
-            <div id="{{post.codigo}}" class="d-flex w-100 justify-content-between" (mouseover)="teste($event)" (mouseout)="teste2($event)">
+<div class="list-group mb-3 mt-3">
+    <div class="list-group mt-2 " *ngFor="let post of posts" role="tablist">
+        <a [routerLink]="['/posts', post.codigo]" routerLinkActive="active" id="{{post.codigo}}"
+            class="list-group-item list-group-item-action" (mouseover)="ativar(post)" (mouseout)="ativar(post)"
+            [ngClass]="{active: post.active}">
+            <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{post.titulo}}</h5>
                 <small>
                     {{post.dono.name}},
