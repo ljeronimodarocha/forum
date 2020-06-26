@@ -23,12 +23,11 @@
     </div>
     <div class=" mt-2 mb-2" *ngFor="let comentario of post.comentarios" role="tablist">
         <div class="list-group" class="list-group-item " role="tablist">
-            <h5 class="mb-1">{{comentario.comentario}}</h5>
-            <small>
+            <h5 class="mb-1 teste">{{comentario.comentario}}</h5>
+            <small class="teste2">
                 {{comentario.usuario.name}},
                 {{comentario.dataComentario | date}}
             </small>
-            <p class=" mr-2">{{post.texto}}</p>
         </div>
     </div>
 </div>
